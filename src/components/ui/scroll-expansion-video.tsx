@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 export function ScrollExpansionVideo() {
@@ -39,10 +40,11 @@ export function ScrollExpansionVideo() {
           />
         ) : (
           <>
-            <img 
+            <Image 
               src="/assets/video_thumbnail.jpeg" 
               alt="Gopal Ahuja Video Thumbnail" 
-              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             
             {/* Subtle Gradient Overlay */}

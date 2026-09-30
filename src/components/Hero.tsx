@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import { data } from '../data';
 import { ArrowRight } from 'lucide-react';
 
@@ -45,7 +46,7 @@ export function Hero({ onContactClick }: HeroProps) {
         </motion.div>
         
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }} className="w-full max-w-6xl mx-auto relative aspect-[16/9] md:aspect-[2.39/1] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/20">
-          <img src={data.hero.backgroundImageUrl || "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop"} alt="Dubai Skyline" className="w-full h-full object-cover opacity-90" />
+          <Image fill src={data.hero.backgroundImageUrl || "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop"} alt="Dubai Skyline" className="w-full h-full object-cover opacity-90" priority />
         </motion.div>
       </motion.div>
     </section>

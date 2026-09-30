@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function MeetGopalAhujaSection() {
   return (
@@ -64,10 +65,11 @@ export default function MeetGopalAhujaSection() {
 
             {/* Main Image Container */}
             <div className='absolute inset-0 bg-gray-100 border border-gray-200 rounded-xl overflow-hidden shadow-xl z-10'>
-              <img
+              <Image
                 src='/assets/photo1.jpeg'
                 alt='Gopal Ahuja - Real Estate Strategist'
-                className='w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105'
+                fill
+                className='object-cover object-center transform transition-transform duration-700 group-hover:scale-105'
               />
             </div>
           </div>

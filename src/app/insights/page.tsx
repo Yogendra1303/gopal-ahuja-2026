@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { YieldChart } from '@/components/YieldChart';
+import DubaiInteractiveMap from '@/components/MapWrapper';
 import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { articles } from '@/data/articleData';
 
@@ -136,7 +138,7 @@ export default function Insights() {
                     
                     <div className="aspect-[21/9] w-full mb-12 overflow-hidden bg-white relative border border-gray-200">
                        {lhsArticles[lhsIndex].image ? (
-                         <img src={lhsArticles[lhsIndex].image} alt={lhsArticles[lhsIndex].title} className="w-full h-full object-cover" />
+                         <Image src={lhsArticles[lhsIndex].image} alt={lhsArticles[lhsIndex].title} fill className="object-cover" />
                        ) : (
                          <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
                        )}
@@ -185,7 +187,7 @@ export default function Insights() {
                     
                     {rhsArticles[rhsIndex].image ? (
                       <div className="aspect-[4/3] w-full mb-6 overflow-hidden bg-white relative border border-gray-200">
-                         <img src={rhsArticles[rhsIndex].image} alt={rhsArticles[rhsIndex].title} className="w-full h-full object-cover" />
+                         <Image src={rhsArticles[rhsIndex].image} alt={rhsArticles[rhsIndex].title} fill className="object-cover" />
                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       </div>
                     ) : (
@@ -488,168 +490,7 @@ export default function Insights() {
             </div>
 
             {/* INTERACTIVE MAP + METRICS LAYOUT */}
-            <div className='flex flex-col xl:flex-row gap-8 items-stretch'>
-
-              {/* LEFT: Interactive SVG Map */}
-              <div className='w-full xl:w-3/5 relative'>
-                <div className='relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#F8FAF9] to-[#EEF2F0] border border-gray-200 shadow-lg'>
-                  {/* Grid overlay */}
-                  <div className='absolute inset-0 opacity-20 bg-[radial-gradient(#0D6323_0.5px,transparent_0.5px)] [background-size:20px_20px]' />
-
-                  <svg viewBox="0 0 600 500" className="w-full h-full relative z-10" xmlns="http://www.w3.org/2000/svg">
-                    {/* Dubai district zones as interactive regions */}
-                    {Object.keys(marketData).map((area, i) => {
-                      const isActive = selectedArea === area;
-                      const zones: Record<string, { path: string; labelX: number; labelY: number }> = {
-                        'Palm Jumeirah': { path: 'M80,220 L130,180 L180,190 L190,240 L170,280 L120,290 L70,260 Z', labelX: 130, labelY: 240 },
-                        'Downtown Dubai': { path: 'M260,180 L330,160 L370,200 L360,260 L300,280 L250,240 Z', labelX: 310, labelY: 220 },
-                        'Dubai Marina': { path: 'M100,310 L170,290 L210,320 L200,370 L150,390 L90,360 Z', labelX: 150, labelY: 340 },
-                        'Dubai Hills Estate': { path: 'M340,280 L420,260 L460,310 L440,360 L370,370 L330,330 Z', labelX: 395, labelY: 320 },
-                        'Jumeirah Village Circle (JVC)': { path: 'M220,330 L290,310 L330,350 L310,400 L250,410 L210,380 Z', labelX: 270, labelY: 365 },
-                        'Saadiyat Island': { path: 'M440,120 L520,100 L560,150 L540,210 L470,220 L430,180 Z', labelX: 495, labelY: 160 }
-                      };
-                      const zone = zones[area];
-                      if (!zone) return null;
-
-                      return (
-                        <g key={area} className="cursor-pointer" onClick={() => setSelectedArea(area)}>
-                          <motion.path
-                            d={zone.path}
-                            fill={isActive ? '#0D6323' : '#E5E7EB'}
-                            stroke={isActive ? '#0D6323' : '#9CA3AF'}
-                            strokeWidth={isActive ? 2.5 : 1}
-                            initial={false}
-                            animate={{
-                              fill: isActive ? '#0D6323' : '#E5E7EB',
-                              scale: isActive ? 1.02 : 1,
-                            }}
-                            whileHover={{ fill: isActive ? '#0D6323' : '#C8102E20', stroke: '#C8102E', strokeWidth: 2 }}
-                            transition={{ duration: 0.3 }}
-                            className="origin-center"
-                          />
-                          <text
-                            x={zone.labelX}
-                            y={zone.labelY - 8}
-                            textAnchor="middle"
-                            className={`text-[10px] font-bold uppercase tracking-wide pointer-events-none select-none ${isActive ? 'fill-white' : 'fill-gray-600'}`}
-                          >
-                            {area.length > 18 ? area.substring(0, 16) + '…' : area}
-                          </text>
-                          <text
-                            x={zone.labelX}
-                            y={zone.labelY + 8}
-                            textAnchor="middle"
-                            className={`text-[9px] pointer-events-none select-none ${isActive ? 'fill-white/80' : 'fill-gray-400'}`}
-                          >
-                            {marketData[area].bua}
-                          </text>
-                          {isActive && (
-                            <motion.circle
-                              cx={zone.labelX}
-                              cy={zone.labelY - 20}
-                              r="4"
-                              fill="#C8102E"
-                              initial={{ scale: 0 }}
-                              animate={{ scale: [1, 1.4, 1] }}
-                              transition={{ repeat: Infinity, duration: 2 }}
-                            />
-                          )}
-                        </g>
-                      );
-                    })}
-
-                    {/* Map title */}
-                    <text x="300" y="470" textAnchor="middle" className="fill-gray-400 text-[10px] font-bold uppercase tracking-widest select-none">Dubai Investment Corridors</text>
-
-                    {/* Compass indicator */}
-                    <g transform="translate(540, 440)">
-                      <circle r="18" fill="white" stroke="#E5E7EB" strokeWidth="1" />
-                      <text textAnchor="middle" y="5" className="fill-gray-600 text-[11px] font-bold select-none">N</text>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-
-              {/* RIGHT: Active District Intelligence Panel */}
-              <div className='w-full xl:w-2/5 flex flex-col gap-5'>
-
-                {/* District name & selector */}
-                <div className='relative'>
-                  <select
-                    value={selectedArea}
-                    onChange={(e) => setSelectedArea(e.target.value)}
-                    className='w-full appearance-none bg-white border-2 border-gray-200 text-black px-5 py-4 pr-12 text-base rounded-xl focus:outline-none focus:border-[#0D6323] transition-all cursor-pointer font-bold tracking-tight'
-                  >
-                    {Object.keys(marketData).map((area) => (
-                      <option key={area} value={area}>{area}</option>
-                    ))}
-                  </select>
-                  <ChevronDown className='absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none' />
-                </div>
-
-                {/* Emirate badge */}
-                <div className='flex items-center gap-2'>
-                  <span className='w-2 h-2 rounded-full bg-[#0D6323]' />
-                  <span className='text-xs text-gray-500 font-medium tracking-wide uppercase'>{currentData.emirate}</span>
-                </div>
-
-                {/* Primary Metric: BUA Valuation */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`bua-${selectedArea}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className='bg-gradient-to-br from-[#0D6323] to-[#0a5520] p-8 rounded-xl text-white shadow-lg'
-                  >
-                    <span className='text-[10px] font-bold tracking-widest uppercase text-white/70 mb-2 block'>Median BUA Valuation</span>
-                    <div className='text-4xl md:text-5xl font-extrabold tracking-tight mb-1'>{currentData.bua}</div>
-                    <span className='text-sm text-white/60'>per sq. ft.</span>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Secondary Metrics Grid */}
-                <div className='grid grid-cols-2 gap-4'>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`yield-${selectedArea}`}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 10 }}
-                      transition={{ duration: 0.3, delay: 0.05 }}
-                      className='bg-white border border-gray-200 p-6 rounded-xl shadow-sm'
-                    >
-                      <span className='text-[10px] text-gray-500 font-bold tracking-widest uppercase block mb-2'>Net Rental Yield</span>
-                      <div className='text-3xl font-extrabold text-black'>{currentData.yield}</div>
-                    </motion.div>
-                  </AnimatePresence>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`growth-${selectedArea}`}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                      className='bg-white border border-gray-200 p-6 rounded-xl shadow-sm'
-                    >
-                      <span className='text-[10px] text-gray-500 font-bold tracking-widest uppercase block mb-2'>Capital Growth (YoY)</span>
-                      <div className='text-3xl font-extrabold text-[#0D6323]'>{currentData.growth}</div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* CTA */}
-                <a
-                  href="https://wa.me/971585952912?text=Hello%20Gopal%2C%20I%20have%20been%20reading%20your%20market%20research%20and%20would%20like%20to%20discuss%20investment%20opportunities%20in%20Dubai."
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  className='w-full bg-[#C8102E] hover:bg-[#a60d24] text-white font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 mt-auto'
-                >
-                  Discuss This Market &rarr;
-                </a>
-              </div>
-            </div>
+            <DubaiInteractiveMap />
           </div>
         </section>
       </div>

@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 export function ScrollExpansionHero() {
@@ -75,10 +76,11 @@ export function ScrollExpansionHero() {
             />
           ) : (
             <>
-              <img 
+              <Image 
                 src="/assets/video_thumbnail.jpeg" 
                 alt="Gopal Ahuja Video Thumbnail" 
-                className="object-cover w-full h-full"
+                fill
+                className="object-cover"
               />
               
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>

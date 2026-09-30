@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import { data } from '../data';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -36,10 +37,11 @@ export function Portfolio() {
             >
               <div className="aspect-video w-full overflow-hidden relative">
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
-                <img
+                <Image
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <div className="p-8 relative z-20">

@@ -1,5 +1,6 @@
 "use client";
 import { use } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -43,10 +44,12 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
-        <img
+        <Image
           src={article.image}
           alt={article.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
@@ -198,10 +201,11 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                 className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-[#C8102E] transition-colors shadow-sm hover:shadow-md"
               >
                 <div className="aspect-[16/9] overflow-hidden">
-                  <img
+                  <Image
                     src={related.image}
                     alt={related.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">

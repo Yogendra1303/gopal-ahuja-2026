@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, use } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -45,10 +46,12 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
 
       {/* Hero Section */}
       <section className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden">
-        <img
+        <Image
           src={caseStudy.image}
           alt={caseStudy.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25" />
 
@@ -237,10 +240,11 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             >
               <div className="md:flex">
                 <div className="md:w-2/5 aspect-[16/9] md:aspect-auto overflow-hidden">
-                  <img
+                  <Image
                     src={otherStudy.image}
                     alt={otherStudy.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">

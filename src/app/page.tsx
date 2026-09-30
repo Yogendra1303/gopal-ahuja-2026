@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { MarketIntelligence } from '@/components/MarketIntelligence';
@@ -112,7 +113,7 @@ export default function Home() {
                 {/* Card 1 */}
                 <a href="/case-study/dubai-2026-strategic-market-entry" className="group cursor-pointer block">
                   <div className="w-full aspect-[16/10] bg-gray-50 border border-gray-200 rounded-lg mb-6 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop" alt="Strategic Market Entry for an International Development Fund" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+                    <Image fill src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop" alt="Strategic Market Entry for an International Development Fund" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <h3 className="text-2xl text-black font-extrabold mb-3 leading-snug">Strategic Market Entry for an International Development Fund</h3>
                   <span className="text-[#C8102E] text-xs font-bold tracking-widest uppercase hover:text-[#a60d24] transition-colors">VIEW ENGAGEMENT &rarr;</span>
@@ -121,7 +122,7 @@ export default function Home() {
                 {/* Card 2 */}
                 <a href="/case-study/waterfront-portfolio-strategy" className="group cursor-pointer block">
                   <div className="w-full aspect-[16/10] bg-gray-50 border border-gray-200 rounded-lg mb-6 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=2940&auto=format&fit=crop" alt="Waterfront Portfolio Strategy" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+                    <Image fill src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=2940&auto=format&fit=crop" alt="Waterfront Portfolio Strategy" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <h3 className="text-2xl text-black font-extrabold mb-3 leading-snug">Waterfront Portfolio Strategy: Structuring an Ultra-Luxury Allocation</h3>
                   <span className="text-[#C8102E] text-xs font-bold tracking-widest uppercase hover:text-[#a60d24] transition-colors">VIEW ENGAGEMENT &rarr;</span>
