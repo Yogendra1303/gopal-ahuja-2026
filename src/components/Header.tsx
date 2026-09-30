@@ -128,7 +128,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
           y: isHeaderHidden ? -25 : 0 
         }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className={`fixed top-0 w-full h-14 z-[100] px-6 md:px-12 flex items-center justify-between transition-colors duration-300 ${
+        className={`fixed top-0 w-full h-14 z-[9999] px-6 md:px-12 flex items-center justify-between transition-colors duration-300 ${
           isHeaderHidden ? 'pointer-events-none' : ''
         } ${
           isScrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-md border-b border-slate-800' : 'bg-[#0F172A] border-b border-slate-800/80'
@@ -194,7 +194,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[90] bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
+            className="fixed inset-0 z-[9998] bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
           >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
@@ -239,14 +239,14 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.14, ease: "easeOut" }}
               onClick={handleCloseModal}
-              className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-sm"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-              className="fixed right-0 top-0 h-full w-full sm:w-[450px] max-w-[100vw] bg-[#0F172A] shadow-2xl flex flex-col z-[101] border-l border-white/5"
+              className="fixed right-0 top-0 h-full w-full sm:w-[450px] max-w-[100vw] bg-[#0F172A] shadow-2xl flex flex-col z-[10000] border-l border-white/5"
             >
               <div className='flex flex-col h-full overflow-y-auto p-6 md:p-8 relative'>
                 <button onClick={handleCloseModal} className='absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full cursor-pointer'>

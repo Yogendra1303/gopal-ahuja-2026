@@ -13,9 +13,7 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakart
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.gopalahuja.com'),
-  alternates: {
-    canonical: '/',
-  },
+
   title: 'Gopal Ahuja | Strategic Real Estate Advisory',
   description: 'Independent market analysis, private portfolio advisory, and capital allocation insights for high-net-worth real estate investors.',
   keywords: 'Dubai Real Estate Advisor, Real Estate Investment Dubai, Institutional Capital Deployment, Luxury Property Dubai, Land Due Diligence, Gopal Ahuja',
