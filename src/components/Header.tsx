@@ -237,15 +237,25 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
                   key={link.route}
                   href={link.href}
                   variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                    hidden: { opacity: 0, y: 30, scale: 0.95 },
+                    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
                   }}
+                  whileHover={{ scale: 1.05, x: 10, color: '#ffffff' }}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-3xl font-bold tracking-tight relative inline-block mx-auto pb-1.5 transition-colors ${
-                    activeRoute === link.route ? 'text-white border-b-2 border-[#C8102E]' : 'text-gray-400 hover:text-white'
+                  className={`text-4xl font-extrabold tracking-tight relative inline-block mx-auto pb-1.5 transition-colors origin-left ${
+                    activeRoute === link.route ? 'text-white' : 'text-gray-400'
                   }`}
                 >
                   {link.label}
+                  {activeRoute === link.route && (
+                    <motion.div
+                      layoutId="mobileActiveUnderline"
+                      className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#C8102E]"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
                 </motion.a>
               ))}
               <motion.div 
