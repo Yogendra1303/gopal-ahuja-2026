@@ -9,7 +9,6 @@ import { ScrollExpansionVideo } from '@/components/ui/scroll-expansion-video';
 import MeetGopalAhujaSection from '@/components/MeetGopalAhuja';
 import ExpertiseServicesSection from '@/components/ExpertiseServicesSection';
 import { HeroMeshWrapper } from '@/components/ui/hero-section-with-smooth-bg-shader';
-import DubaiInteractiveMap from '@/components/MapWrapper';
 
 export default function Home() {
   useEffect(() => {
@@ -149,33 +148,6 @@ export default function Home() {
 
         {/* E. Market Reports (Fan Carousel) */}
         <MarketIntelligence />
-
-        {/* Dubai Interactive Map Section */}
-        <section className='w-full bg-[#FFFFFF] py-16 sm:py-24 px-5 sm:px-12 border-t border-gray-200 overflow-hidden relative'>
-          <div className='max-w-7xl mx-auto'>
-            {/* Section Header */}
-            <div className='text-center max-w-3xl mx-auto mb-12 sm:mb-16'>
-              <span className='text-[#C8102E] text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 block'>
-                SPATIAL INTELLIGENCE
-              </span>
-              <h2 className='text-black text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance'>
-                Interactive Dubai Market Map.
-              </h2>
-              <p className='text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed text-balance'>
-                Explore Dubai's investment landscape through an interactive intelligence map. Select a district to compare pricing, rental yields, capital appreciation, and market performance.
-              </p>
-            </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7 }}
-            >
-              <DubaiInteractiveMap />
-            </motion.div>
-          </div>
-        </section>
 
 
         {/* Client Success / Testimonials */}
