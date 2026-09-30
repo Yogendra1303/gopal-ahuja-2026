@@ -86,10 +86,10 @@ export default function DubaiInteractiveMap() {
           className="w-full h-full"
           attributionControl={false}
         >
-          {/* Using Carto Voyager tiles for a high-end, clean look */}
+          {/* Using standard OpenStreetMap tiles which are 100% free and require no API key */}
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           
           {marketData.map((location) => (
