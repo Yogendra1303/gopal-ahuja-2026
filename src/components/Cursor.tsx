@@ -49,7 +49,7 @@ export function Cursor() {
     <>
       {/* Main Cursor Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-[#C8102E] rounded-full pointer-events-none z-[99999] mix-blend-difference"
+        className="fixed top-0 left-0 w-3 h-3 bg-[#C8102E] rounded-full pointer-events-none z-[99999]"
         animate={{
           x: mousePosition.x - 6,
           y: mousePosition.y - 6,
