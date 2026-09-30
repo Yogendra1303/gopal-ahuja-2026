@@ -4,6 +4,7 @@ import { motion, useScroll, AnimatePresence } from 'motion/react';
 import { Menu, X, FileText } from "lucide-react";
 import { trackEvent } from '@/lib/analytics';
 import Link from 'next/link';
+import Magnetic from './Magnetic';
 
 export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -176,36 +177,40 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <span 
-            onClick={() => { setIsSubmitted(false); setIsAdvisoryOpen(true); }} 
-            className="border border-[#C8102E] text-white hover:bg-[#C8102E] hover:text-white px-6 py-2 rounded-sm font-bold text-xs transition-all duration-250 ease-out cursor-pointer uppercase tracking-widest shadow-sm hover:shadow-[0_4px_15px_rgba(200,16,46,0.35)]"
-          >
-            Contact Gopal
-          </span>
+          <Magnetic strength={20}>
+            <span 
+              onClick={() => { setIsSubmitted(false); setIsAdvisoryOpen(true); }} 
+              className="border border-[#C8102E] text-white hover:bg-[#C8102E] hover:text-white px-6 py-2 rounded-sm font-bold text-xs transition-all duration-250 ease-out cursor-pointer uppercase tracking-widest shadow-sm hover:shadow-[0_4px_15px_rgba(200,16,46,0.35)]"
+            >
+              Contact Gopal
+            </span>
+          </Magnetic>
         </div>
 
         <div className="md:hidden flex items-center gap-4 z-50">
-          <button 
-            className="md:hidden relative z-50 w-6 h-6 flex flex-col justify-center items-center focus:outline-none" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }} 
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute w-6 h-[2px] bg-white rounded-full" 
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { opacity: 0, scale: 0.5 } : { opacity: 1, scale: 1 }} 
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute w-6 h-[2px] bg-white rounded-full" 
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }} 
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute w-6 h-[2px] bg-white rounded-full" 
-            />
-          </button>
+          <Magnetic strength={30}>
+            <button 
+              className="md:hidden relative z-50 w-6 h-6 flex flex-col justify-center items-center focus:outline-none cursor-pointer" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              <motion.span 
+                animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }} 
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute w-6 h-[2px] bg-white rounded-full" 
+              />
+              <motion.span 
+                animate={isMobileMenuOpen ? { opacity: 0, scale: 0.5 } : { opacity: 1, scale: 1 }} 
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute w-6 h-[2px] bg-white rounded-full" 
+              />
+              <motion.span 
+                animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }} 
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute w-6 h-[2px] bg-white rounded-full" 
+              />
+            </button>
+          </Magnetic>
         </div>
       </motion.nav>
 
