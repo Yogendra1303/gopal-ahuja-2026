@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { 
@@ -193,6 +193,16 @@ export default function About() {
   const [activeNode, setActiveNode] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  // Parallax Setup
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -218,8 +228,8 @@ export default function About() {
         {/* =========================================================
             SECTION 01: HERO (UNTOUCHED - EXACTLY AS ORIGINAL)
             ========================================================= */}
-        <section className="relative w-full min-h-[75vh] flex items-center justify-between px-6 md:px-16 pt-32 pb-20 bg-[#FFFFFF] overflow-hidden">
-          <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[150%] md:w-[500px] aspect-square md:h-[500px] bg-[#C8102E]/10 blur-[150px] rounded-full pointer-events-none z-0" />
+        <section ref={containerRef} className="relative w-full min-h-[75vh] flex items-center justify-between px-6 md:px-16 pt-32 pb-20 bg-[#FFFFFF] overflow-hidden">
+          <motion.div style={{ y: yParallax }} className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[150%] md:w-[500px] aspect-square md:h-[500px] bg-[#C8102E]/10 blur-[150px] rounded-full pointer-events-none z-0" />
           
           <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
             {/* Left Frame */}
@@ -239,19 +249,21 @@ export default function About() {
 
             {/* Right Frame */}
             <motion.div 
+              style={{ y: yParallax }}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
               className="w-full md:w-5/12 flex justify-center md:justify-end items-center mt-16 md:mt-0 relative"
             >
-              <div className="relative w-full max-w-[420px] aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center group">
+              <div className="relative w-full max-w-[420px] aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center group overflow-hidden">
                 <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#C8102E]/50 z-20 transition-all group-hover:border-[#C8102E]" />
                 <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#C8102E]/50 z-20 transition-all group-hover:border-[#C8102E]" />
                 <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#C8102E]/50 z-20 transition-all group-hover:border-[#C8102E]" />
                 <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#C8102E]/50 z-20 transition-all group-hover:border-[#C8102E]" />
                 
                 <div className="w-full h-full relative overflow-hidden bg-gray-100 border border-gray-200 shadow-xl">
-                  <img 
+                  <motion.img 
+                    style={{ scale: imageScale }}
                     src="/assets/photo1.jpeg" 
                     alt="Gopal Ahuja - Founder & Real Estate Advisor" 
                     className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105" 
@@ -269,19 +281,42 @@ export default function About() {
         <section className="w-full bg-[#FFFFFF] py-28 px-6 md:px-16 border-t border-gray-100">
           <div className="max-w-7xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+              }}
               className="max-w-4xl mb-20"
             >
-              <span className="text-[#C8102E] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">STRATEGIC DISPOSITION</span>
-              <h2 className="text-4xl md:text-6xl text-black font-extrabold tracking-tight leading-[1.1] mb-8">
+              <motion.span 
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                }}
+                className="text-[#C8102E] text-xs font-bold tracking-[0.3em] uppercase mb-4 block"
+              >
+                STRATEGIC DISPOSITION
+              </motion.span>
+              <motion.h2 
+                variants={{
+                  hidden: { opacity: 0, y: 40, clipPath: 'inset(100% 0 0 0)' },
+                  visible: { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)', transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="text-4xl md:text-6xl text-black font-extrabold tracking-tight leading-[1.1] mb-8"
+              >
                 Why Sophisticated Investors Don't Hire Brokers
-              </h2>
-              <p className="text-gray-600 text-xl md:text-2xl leading-relaxed font-light">
+              </motion.h2>
+              <motion.p 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                }}
+                className="text-gray-600 text-xl md:text-2xl leading-relaxed font-light"
+              >
                 Elite investors don't need property access—they need judgment, market intelligence, and capital protection.
-              </p>
+              </motion.p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-gray-200 pt-16">
