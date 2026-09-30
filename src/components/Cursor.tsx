@@ -64,10 +64,19 @@ export function Cursor() {
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 1 : 0.5,
+          scale: isHovering ? [1.4, 1.6, 1.4] : 1,
+          opacity: isHovering ? [0.6, 1, 0.6] : 0.5,
         }}
-        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
+        transition={{
+          x: { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 },
+          y: { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 },
+          scale: isHovering 
+            ? { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+            : { type: 'spring', stiffness: 300, damping: 20 },
+          opacity: isHovering 
+            ? { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+            : { duration: 0.2 },
+        }}
       />
     </>
   );
