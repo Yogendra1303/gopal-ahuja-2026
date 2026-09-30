@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import { data } from '../data';
 import { ArrowRight } from 'lucide-react';
-import Magnetic from './Magnetic';
 
 interface HeroProps {
   onContactClick: () => void;
@@ -38,16 +37,12 @@ export function Hero({ onContactClick }: HeroProps) {
         </motion.p>
         
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Magnetic strength={25}>
-            <button onClick={onContactClick} className="bg-[#C8102E] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2">
-              PLAN YOUR EXPANSION &rarr;
-            </button>
-          </Magnetic>
-          <Magnetic strength={25}>
-            <button className="bg-transparent border border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#0D6323] transition-colors">
-              Explore Deployment Metrics
-            </button>
-          </Magnetic>
+          <button onClick={onContactClick} className="bg-[#C8102E] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2">
+            PLAN YOUR EXPANSION &rarr;
+          </button>
+          <button className="bg-transparent border border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#0D6323] transition-colors">
+            Explore Deployment Metrics
+          </button>
         </motion.div>
         
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }} className="w-full max-w-6xl mx-auto relative aspect-[16/9] md:aspect-[2.39/1] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/20">

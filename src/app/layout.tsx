@@ -7,7 +7,6 @@ import { GlobalLeadCapture } from '@/components/GlobalLeadCapture'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Cursor } from '@/components/Cursor'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })
@@ -59,7 +58,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <Cursor />
         {children}
         <GlobalLeadCapture />
         <WhatsAppButton />
