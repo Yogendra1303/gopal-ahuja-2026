@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, AnimatePresence } from 'motion/react';
 import { Menu, X, FileText } from "lucide-react";
+import { trackEvent } from '@/lib/analytics';
 
 export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
     const handleOpenDrawer = () => {
       setIsAdvisoryOpen(true);
       setIsSubmitted(false);
+      trackEvent('contact_drawer_opened', { source: 'custom_event' });
     };
     window.addEventListener('openContactDrawer', handleOpenDrawer);
     return () => window.removeEventListener('openContactDrawer', handleOpenDrawer);
@@ -219,7 +221,12 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
               <div className="mt-8">
                 <span 
                   className="w-full flex items-center justify-center border border-[#C8102E] text-white bg-[#C8102E] hover:bg-red-700 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest cursor-pointer transition-all duration-250 shadow-md" 
-                  onClick={() => { setIsMobileMenuOpen(false); setIsSubmitted(false); setIsAdvisoryOpen(true); }}
+                  onClick={() => { 
+                    setIsMobileMenuOpen(false); 
+                    setIsSubmitted(false); 
+                    setIsAdvisoryOpen(true); 
+                    trackEvent('contact_drawer_opened', { source: 'mobile_menu' });
+                  }}
                 >
                   Contact Gopal
                 </span>
