@@ -1,5 +1,6 @@
 import React from 'react';
 import { GlowCard } from './ui/spotlight-card';
+import { motion } from 'motion/react';
 
 export default function ExpertiseServicesSection() {
   const services = [
@@ -40,39 +41,58 @@ export default function ExpertiseServicesSection() {
       <div className='max-w-7xl mx-auto'>
         
         {/* SECTION HEADER */}
-        <div className='max-w-3xl mb-12 sm:mb-16'>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className='max-w-3xl mb-12 sm:mb-16'
+        >
           <span className='text-[#C8102E] text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 block'>
             Strategic Advisory
           </span>
-          <h2 className='text-black text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance'>
+          <motion.h2 
+            initial={{ opacity: 0, clipPath: 'inset(100% 0 0 0)' }}
+            whileInView={{ opacity: 1, clipPath: 'inset(0% 0 0 0)' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            className='text-black text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance'
+          >
             How I Help You Invest Smarter
-          </h2>
+          </motion.h2>
           <p className='text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed text-balance'>
             Every investment is backed by local intelligence, strategic advisory, and end-to-end execution.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3x2 Grid Layout */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {services.map((service) => (
-            <GlowCard 
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
-              customSize={true}
-              glowColor='red'
-              className='!block !shadow-sm bg-[#F9FAFB] border border-gray-100 p-8 md:p-10 !rounded-2xl z-10 overflow-hidden'
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className='relative z-20 flex flex-col h-full'>
-                <span className='text-[#C8102E] font-bold text-xs sm:text-sm tracking-widest mb-6 block'>
-                  {service.id}
-                </span>
-                <h3 className='text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4'>
-                  {service.title}
-                </h3>
-                <p className='text-gray-600 leading-relaxed font-normal text-sm sm:text-base'>
-                  {service.description}
-                </p>
-              </div>
-            </GlowCard>
+              <GlowCard 
+                customSize={true}
+                glowColor='red'
+                className='!block !shadow-sm bg-[#F9FAFB] border border-gray-100 p-8 md:p-10 !rounded-2xl z-10 overflow-hidden h-full'
+              >
+                <div className='relative z-20 flex flex-col h-full'>
+                  <span className='text-[#C8102E] font-bold text-xs sm:text-sm tracking-widest mb-6 block'>
+                    {service.id}
+                  </span>
+                  <h3 className='text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4'>
+                    {service.title}
+                  </h3>
+                  <p className='text-gray-600 leading-relaxed font-normal text-sm sm:text-base'>
+                    {service.description}
+                  </p>
+                </div>
+              </GlowCard>
+            </motion.div>
           ))}
         </div>
       </div>

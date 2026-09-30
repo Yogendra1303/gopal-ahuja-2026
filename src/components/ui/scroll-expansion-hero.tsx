@@ -80,6 +80,7 @@ export function ScrollExpansionHero() {
                 src="/assets/video_thumbnail.jpeg" 
                 alt="Gopal Ahuja Video Thumbnail" 
                 fill
+                sizes="(max-width: 768px) 100vw, 100vw"
                 className="object-cover"
               />
               

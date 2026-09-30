@@ -7,6 +7,7 @@ import { GlobalLeadCapture } from '@/components/GlobalLeadCapture'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Cursor } from '@/components/Cursor'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
   description: 'Independent market analysis, private portfolio advisory, and capital allocation insights for high-net-worth real estate investors.',
   keywords: 'Dubai Real Estate Advisor, Real Estate Investment Dubai, Institutional Capital Deployment, Luxury Property Dubai, Land Due Diligence, Gopal Ahuja',
   authors: [{ name: 'Gopal Ahuja' }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Gopal Ahuja | Strategic Real Estate Advisory',
     description: 'Independent market analysis, private portfolio advisory, and capital allocation insights for high-net-worth real estate investors.',
@@ -48,19 +52,20 @@ const organizationSchema = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-        const script = createElement('script', {
-                  type: 'application/ld+json',
-                  dangerouslySetInnerHTML: { __html: JSON.stringify(organizationSchema) },
-        })
-        const body = createElement(
-                  'body',
-              { className: 'bg-white text-gray-900 antialiased selection:bg-[#C8102E] selection:text-white' },
-                  script,
-                  children,
-                  createElement(GlobalLeadCapture),
-                  createElement(WhatsAppButton),
-                  createElement(Analytics),
-                  createElement(SpeedInsights),
-                )
-        return createElement('html', { lang: 'en', className: 'scroll-smooth ' + inter.variable + ' ' + jakarta.variable }, body)
+  return (
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${jakarta.variable}`}>
+      <body className="bg-white text-gray-900 antialiased selection:bg-[#C8102E] selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <Cursor />
+        {children}
+        <GlobalLeadCapture />
+        <WhatsAppButton />
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
+  );
 }

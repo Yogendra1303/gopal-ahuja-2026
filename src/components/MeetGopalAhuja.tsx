@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 
 export default function MeetGopalAhujaSection() {
   return (
@@ -9,20 +10,34 @@ export default function MeetGopalAhujaSection() {
         {/* LEFT COLUMN: EDITORIAL CONTENT */}
         <div className='lg:col-span-7 flex flex-col items-start text-left'>
           {/* Eyebrow */}
-          <span
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
             className='text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase mb-4 sm:mb-6 block text-[#C8102E]'
           >
             MEET YOUR TRUSTED ADVISOR IN DUBAI
-          </span>
+          </motion.span>
 
           {/* Main Headline */}
-          <h2
+          <motion.h2
+            initial={{ opacity: 0, clipPath: 'inset(100% 0 0 0)' }}
+            whileInView={{ opacity: 1, clipPath: 'inset(0% 0 0 0)' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className='text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 sm:mb-8 leading-[1.1] text-[#111827] text-balance'
           >
             Your Strategic Real Estate Advisor in Dubai.
-          </h2>
+          </motion.h2>
 
-          <div className='space-y-5 sm:space-y-6 mb-8 sm:mb-10 max-w-xl'>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className='space-y-5 sm:space-y-6 mb-8 sm:mb-10 max-w-xl'
+          >
             <p
               className='text-base sm:text-lg leading-relaxed font-normal text-[#4B5563]'
             >
@@ -34,10 +49,16 @@ export default function MeetGopalAhujaSection() {
             >
               From the first conversation to the final transaction, I work alongside you to identify the right opportunities, reduce risk, and ensure every investment is backed by local expertise.
             </p>
-          </div>
+          </motion.div>
 
           {/* DUAL ACTION BUTTONS */}
-          <div className='flex flex-col sm:flex-row items-center gap-4 mb-10 w-full sm:w-auto'>
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className='flex flex-col sm:flex-row items-center gap-4 mb-10 w-full sm:w-auto'
+          >
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSejc0Afplc4AzZaLNZ7OkZBEzh86VDRwTwB5D5krI0JdpXj8w/viewform"
               target="_blank"
@@ -54,11 +75,17 @@ export default function MeetGopalAhujaSection() {
             >
               For Private Investors
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* RIGHT COLUMN: STRUCTURED CINEMATIC PORTRAIT */}
-        <div className='lg:col-span-5 flex flex-col items-center justify-center w-full px-0 sm:px-10 lg:px-0'>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className='lg:col-span-5 flex flex-col items-center justify-center w-full px-0 sm:px-10 lg:px-0'
+        >
           <div className='relative w-full max-w-sm aspect-[4/5] group mb-6'>
             {/* Offset Geometric Accent */}
             <div className='absolute inset-0 bg-[#0D6323] translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 rounded-xl transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5'></div>
@@ -69,6 +96,7 @@ export default function MeetGopalAhujaSection() {
                 src='/assets/photo1.jpeg'
                 alt='Gopal Ahuja - Real Estate Strategist'
                 fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className='object-cover object-center transform transition-transform duration-700 group-hover:scale-105'
               />
             </div>
@@ -77,7 +105,7 @@ export default function MeetGopalAhujaSection() {
           <span className='text-[10px] sm:text-xs text-gray-400 font-medium tracking-widest uppercase mt-2 sm:mt-4 z-10'>
             Founder-Led Real Estate Advisory in Dubai
           </span>
-        </div>
+        </motion.div>
 
       </div>
     </section>

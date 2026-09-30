@@ -1,7 +1,9 @@
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, AnimatePresence } from 'motion/react';
 import { Menu, X, FileText } from "lucide-react";
 import { trackEvent } from '@/lib/analytics';
+import Link from 'next/link';
 
 export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -136,7 +138,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
           isScrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-md border-b border-slate-800' : 'bg-[#0F172A] border-b border-slate-800/80'
         }`}
       >
-        <a href="/" className="z-50 flex items-center gap-2.5 text-white text-lg font-bold tracking-widest uppercase group">
+        <Link href="/" className="z-50 flex items-center gap-2.5 text-white text-lg font-bold tracking-widest uppercase group">
           <span className="inline-flex items-center justify-center overflow-hidden rounded-[2px] shadow-sm w-[23px] h-[16px] border border-white/20 shrink-0" title="United Arab Emirates">
             <svg viewBox="0 0 600 300" className="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
               <rect width="600" height="100" fill="#007A3D"/>
@@ -146,7 +148,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
             </svg>
           </span>
           <span>GOPAL AHUJA</span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12">
           {[
@@ -154,7 +156,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
             { route: 'insights', label: 'Insights', href: '/insights' },
             { route: 'about', label: 'About Us', href: '/about' }
           ].map((link) => (
-            <a
+            <Link
               key={link.route}
               href={link.href}
               className={`relative font-semibold text-[13px] tracking-wide py-1 transition-colors duration-200 ${
@@ -169,7 +171,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -224,8 +226,25 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
             }}
             className="fixed inset-0 z-[9998] bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
           >
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
+            {/* Dynamic Glassmorphism Blobs */}
+            <motion.div 
+              animate={{ 
+                x: [0, 30, -30, 0], 
+                y: [0, -30, 30, 0],
+                scale: [1, 1.2, 0.9, 1]
+              }}
+              transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+              className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] max-w-[400px] max-h-[400px] bg-[#C8102E]/20 blur-[100px] rounded-full pointer-events-none" 
+            />
+            <motion.div 
+              animate={{ 
+                x: [0, -40, 40, 0], 
+                y: [0, 40, -40, 0],
+                scale: [1, 0.8, 1.1, 1]
+              }}
+              transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+              className="absolute bottom-[-10%] left-[-10%] w-[70vw] h-[70vw] max-w-[500px] max-h-[500px] bg-[#007A3D]/10 blur-[120px] rounded-full pointer-events-none" 
+            />
 
             <nav className="flex flex-col gap-8 text-center relative z-10 w-full max-w-sm">
               {[
@@ -299,9 +318,29 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-              className="fixed right-0 top-0 h-full w-full sm:w-[450px] max-w-[100vw] bg-[#0F172A] shadow-2xl flex flex-col z-[10000] border-l border-white/5"
+              className="fixed right-0 top-0 h-full w-full sm:w-[450px] max-w-[100vw] bg-[#0F172A]/90 backdrop-blur-3xl shadow-2xl flex flex-col z-[10000] border-l border-white/5 overflow-hidden"
             >
-              <div className='flex flex-col h-full overflow-y-auto p-6 md:p-8 relative'>
+              {/* Dynamic Glassmorphism Blobs inside Drawer */}
+              <motion.div 
+                animate={{ 
+                  x: [0, 20, -20, 0], 
+                  y: [0, 40, -40, 0],
+                  scale: [1, 1.3, 0.8, 1]
+                }}
+                transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C8102E]/15 blur-[100px] rounded-full pointer-events-none z-0" 
+              />
+              <motion.div 
+                animate={{ 
+                  x: [0, -30, 30, 0], 
+                  y: [0, -40, 40, 0],
+                  scale: [1, 0.9, 1.2, 1]
+                }}
+                transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
+                className="absolute bottom-0 left-[-20%] w-[350px] h-[350px] bg-[#007A3D]/10 blur-[100px] rounded-full pointer-events-none z-0" 
+              />
+
+              <div className='flex flex-col h-full overflow-y-auto p-6 md:p-8 relative z-10'>
                 <button onClick={handleCloseModal} className='absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full cursor-pointer'>
                   <svg className='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg>
                 </button>

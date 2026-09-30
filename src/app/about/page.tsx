@@ -369,8 +369,8 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mb-16"
             >
-              <span className="text-[#C8102E] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">PROPRIETARY METHODOLOGY</span>
-              <h2 className="text-4xl md:text-5xl text-black font-extrabold tracking-tight mb-4">
+              <span className="text-[#C8102E] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 block">PROPRIETARY METHODOLOGY</span>
+              <h2 className="text-3xl md:text-5xl text-black font-extrabold tracking-tight mb-4 leading-tight">
                 Investment Decision Framework
               </h2>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
@@ -415,18 +415,18 @@ export default function About() {
                 className="bg-white border-2 border-gray-200 p-8 md:p-12 rounded-2xl shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
               >
                 <div className="max-w-3xl">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-[#C8102E] text-white text-xs font-bold px-3 py-1 rounded-full font-mono uppercase tracking-widest">
-                      Stage {decisionNodes[activeNode].step}
+                  <div className="flex flex-row items-center gap-3 md:gap-4 mb-4">
+                    <span className="bg-[#C8102E] text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full font-mono uppercase tracking-widest whitespace-nowrap shrink-0" style={{ whiteSpace: 'nowrap' }}>
+                      STAGE {decisionNodes[activeNode].step}
                     </span>
-                    <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">
+                    <span className="text-[11px] md:text-xs text-gray-500 font-bold uppercase tracking-wider leading-snug">
                       {decisionNodes[activeNode].summary}
                     </span>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-black mb-4 tracking-tight">
+                  <h3 className="text-xl md:text-3xl font-extrabold text-black mb-4 tracking-tight leading-[1.2]">
                     {decisionNodes[activeNode].title}
                   </h3>
-                  <p className="text-gray-700 text-base md:text-lg leading-relaxed font-normal">
+                  <p className="text-gray-700 text-sm md:text-lg leading-relaxed font-normal">
                     {decisionNodes[activeNode].details}
                   </p>
                 </div>
@@ -449,16 +449,7 @@ export default function About() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Mobile Vertical Flow Fallback */}
-            <div className="lg:hidden grid grid-cols-1 gap-4 mt-8">
-              {decisionNodes.map((node, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
-                  <span className="text-xs font-bold text-[#C8102E] font-mono block mb-1">{node.step} // {node.summary}</span>
-                  <h4 className="text-lg font-bold text-black mb-2">{node.title}</h4>
-                  <p className="text-xs text-gray-600 leading-relaxed">{node.details}</p>
-                </div>
-              ))}
-            </div>
+            {/* Mobile Vertical Flow Fallback - Removed to avoid duplication with the slider */}
           </div>
         </section>
 

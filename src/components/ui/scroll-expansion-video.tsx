@@ -44,6 +44,7 @@ export function ScrollExpansionVideo() {
               src="/assets/video_thumbnail.jpeg" 
               alt="Gopal Ahuja Video Thumbnail" 
               fill
+              sizes="(max-width: 768px) 100vw, 100vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             

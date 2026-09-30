@@ -138,7 +138,7 @@ export default function Insights() {
                     
                     <div className="aspect-[21/9] w-full mb-12 overflow-hidden bg-white relative border border-gray-200">
                        {lhsArticles[lhsIndex].image ? (
-                         <Image src={lhsArticles[lhsIndex].image} alt={lhsArticles[lhsIndex].title} fill className="object-cover" />
+                         <Image src={lhsArticles[lhsIndex].image} alt={lhsArticles[lhsIndex].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                        ) : (
                          <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
                        )}
@@ -187,7 +187,7 @@ export default function Insights() {
                     
                     {rhsArticles[rhsIndex].image ? (
                       <div className="aspect-[4/3] w-full mb-6 overflow-hidden bg-white relative border border-gray-200">
-                         <Image src={rhsArticles[rhsIndex].image} alt={rhsArticles[rhsIndex].title} fill className="object-cover" />
+                         <Image src={rhsArticles[rhsIndex].image} alt={rhsArticles[rhsIndex].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       </div>
                     ) : (

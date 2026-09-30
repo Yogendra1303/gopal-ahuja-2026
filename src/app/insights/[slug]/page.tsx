@@ -1,6 +1,7 @@
 "use client";
 import { use } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -44,26 +45,28 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          className="object-cover"
-          priority
-        />
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
         {/* Back Button */}
-        <motion.a
-          href="/insights"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          className="absolute top-20 left-6 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors z-20 group"
-        >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm font-medium tracking-wide">Back to Insights</span>
-        </motion.a>
+        <Link href="/insights" passHref legacyBehavior>
+          <motion.a
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="absolute top-20 left-6 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors z-20 group"
+          >
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm font-medium tracking-wide">Back to Insights</span>
+          </motion.a>
+        </Link>
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 lg:p-16">
@@ -71,8 +74,8 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block bg-[#C8102E] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 mb-6"
+              className="inline-block bg-[#C8102E] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 mb-6 whitespace-nowrap shrink-0"
+              style={{ whiteSpace: 'nowrap' }}
             >
               {article.tag || 'Market Insight'}
             </motion.span>
@@ -195,7 +198,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedArticles.map((related) => (
-              <a
+              <Link
                 key={related.slug}
                 href={`/insights/${related.slug}`}
                 className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-[#C8102E] transition-colors shadow-sm hover:shadow-md"
@@ -205,6 +208,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                     src={related.image}
                     alt={related.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -222,7 +226,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                     {related.readTime}
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

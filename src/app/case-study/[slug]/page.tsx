@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, use } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -50,22 +51,24 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           src={caseStudy.image}
           alt={caseStudy.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25" />
 
         {/* Back Button */}
-        <motion.a
-          href="/"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          className="absolute top-20 left-6 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors z-20 group"
-        >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm font-medium tracking-wide">Back to Home</span>
-        </motion.a>
+        <Link href="/" passHref legacyBehavior>
+          <motion.a
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="absolute top-20 left-6 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors z-20 group"
+          >
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm font-medium tracking-wide">Back to Home</span>
+          </motion.a>
+        </Link>
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 lg:p-16">
@@ -73,8 +76,8 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block bg-[#C8102E] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 mb-5"
+              className="inline-block bg-[#C8102E] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 mb-5 whitespace-nowrap shrink-0"
+              style={{ whiteSpace: 'nowrap' }}
             >
               {caseStudy.tag}
             </motion.span>
@@ -234,7 +237,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight mb-10">
               Related Engagement
             </h3>
-            <a
+            <Link
               href={`/case-study/${otherStudy.slug}`}
               className="group block bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-[#C8102E] transition-colors shadow-sm hover:shadow-md"
             >
@@ -244,6 +247,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                     src={otherStudy.image}
                     alt={otherStudy.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -267,7 +271,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </section>
       )}

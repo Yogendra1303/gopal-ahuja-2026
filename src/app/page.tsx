@@ -9,6 +9,7 @@ import { ScrollExpansionVideo } from '@/components/ui/scroll-expansion-video';
 import MeetGopalAhujaSection from '@/components/MeetGopalAhuja';
 import ExpertiseServicesSection from '@/components/ExpertiseServicesSection';
 import { HeroMeshWrapper } from '@/components/ui/hero-section-with-smooth-bg-shader';
+import DubaiInteractiveMap from '@/components/MapWrapper';
 
 export default function Home() {
   useEffect(() => {
@@ -111,22 +112,36 @@ export default function Home() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {/* Card 1 */}
-                <a href="/case-study/dubai-2026-strategic-market-entry" className="group cursor-pointer block">
+                <motion.a 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  href="/case-study/dubai-2026-strategic-market-entry" 
+                  className="group cursor-pointer block"
+                >
                   <div className="w-full aspect-[16/10] bg-gray-50 border border-gray-200 rounded-lg mb-6 relative overflow-hidden">
-                    <Image fill src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop" alt="Strategic Market Entry for an International Development Fund" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+                    <Image fill src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop" sizes="(max-width: 768px) 100vw, 50vw" alt="Strategic Market Entry for an International Development Fund" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <h3 className="text-2xl text-black font-extrabold mb-3 leading-snug">Strategic Market Entry for an International Development Fund</h3>
                   <span className="text-[#C8102E] text-xs font-bold tracking-widest uppercase hover:text-[#a60d24] transition-colors">VIEW ENGAGEMENT &rarr;</span>
-                </a>
+                </motion.a>
                 
                 {/* Card 2 */}
-                <a href="/case-study/waterfront-portfolio-strategy" className="group cursor-pointer block">
+                <motion.a 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  href="/case-study/waterfront-portfolio-strategy" 
+                  className="group cursor-pointer block"
+                >
                   <div className="w-full aspect-[16/10] bg-gray-50 border border-gray-200 rounded-lg mb-6 relative overflow-hidden">
-                    <Image fill src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=2940&auto=format&fit=crop" alt="Waterfront Portfolio Strategy" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+                    <Image fill src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=2940&auto=format&fit=crop" sizes="(max-width: 768px) 100vw, 50vw" alt="Waterfront Portfolio Strategy" className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <h3 className="text-2xl text-black font-extrabold mb-3 leading-snug">Waterfront Portfolio Strategy: Structuring an Ultra-Luxury Allocation</h3>
                   <span className="text-[#C8102E] text-xs font-bold tracking-widest uppercase hover:text-[#a60d24] transition-colors">VIEW ENGAGEMENT &rarr;</span>
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           </div>
@@ -134,6 +149,33 @@ export default function Home() {
 
         {/* E. Market Reports (Fan Carousel) */}
         <MarketIntelligence />
+
+        {/* Dubai Interactive Map Section */}
+        <section className='w-full bg-[#FFFFFF] py-16 sm:py-24 px-5 sm:px-12 border-t border-gray-200 overflow-hidden relative'>
+          <div className='max-w-7xl mx-auto'>
+            {/* Section Header */}
+            <div className='text-center max-w-3xl mx-auto mb-12 sm:mb-16'>
+              <span className='text-[#C8102E] text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 block'>
+                SPATIAL INTELLIGENCE
+              </span>
+              <h2 className='text-black text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance'>
+                Interactive Dubai Market Map.
+              </h2>
+              <p className='text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed text-balance'>
+                Explore Dubai's investment landscape through an interactive intelligence map. Select a district to compare pricing, rental yields, capital appreciation, and market performance.
+              </p>
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+            >
+              <DubaiInteractiveMap />
+            </motion.div>
+          </div>
+        </section>
 
 
         {/* Client Success / Testimonials */}
@@ -157,7 +199,13 @@ export default function Home() {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-16'>
               
               {/* Card 1: Institutional/Developer */}
-              <div className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'
+              >
                 <span className='text-[#C8102E] text-6xl font-serif leading-none absolute top-6 left-8 opacity-80'>“</span>
                 <p className='text-gray-700 text-base leading-relaxed mt-8 mb-8 relative z-10'>
                   Gopal’s data-driven approach entirely changed how we acquire land. His underwriting models are the sharpest we've seen in the region. Flawless execution from start to finish.
@@ -166,10 +214,16 @@ export default function Home() {
                   <p className='text-black font-bold text-sm'>Managing Director</p>
                   <p className='text-gray-500 text-xs uppercase tracking-wider'>Global Development Fund</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 2: Private Wealth */}
-              <div className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'
+              >
                 <span className='text-[#C8102E] text-6xl font-serif leading-none absolute top-6 left-8 opacity-80'>“</span>
                 <p className='text-gray-700 text-base leading-relaxed mt-8 mb-8 relative z-10'>
                   Finding an off-market luxury property is hard; finding an advisor who genuinely protects your wealth is harder. Gopal delivered on both with total discretion.
@@ -178,10 +232,16 @@ export default function Home() {
                   <p className='text-black font-bold text-sm'>Private Investor</p>
                   <p className='text-gray-500 text-xs uppercase tracking-wider'>London, UK</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 3: Yield/ROI */}
-              <div className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className='bg-white p-8 md:p-10 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative'
+              >
                 <span className='text-[#C8102E] text-6xl font-serif leading-none absolute top-6 left-8 opacity-80'>“</span>
                 <p className='text-gray-700 text-base leading-relaxed mt-8 mb-8 relative z-10'>
                   His foresight on the waterfront corridors yielded returns well beyond our initial projections. He doesn't just sell properties; he builds long-term strategy.
@@ -190,7 +250,7 @@ export default function Home() {
                   <p className='text-black font-bold text-sm'>Portfolio Manager</p>
                   <p className='text-gray-500 text-xs uppercase tracking-wider'>European Family Office</p>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
 

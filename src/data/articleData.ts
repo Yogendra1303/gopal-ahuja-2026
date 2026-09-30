@@ -526,6 +526,133 @@ export const articles: Article[] = [
       { type: 'paragraph', text: 'I advise investors on sustainable real estate strategies in the UAE, including asset selection, certification pathways, and ESG-aligned portfolio construction. For a conversation about how sustainability can enhance your investment approach, please reach out.' },
     ]
   },
+
+  // ─── ARTICLE 9: Navigating the Off-Plan Market ───
+  {
+    slug: 'navigating-off-plan-market',
+    tag: 'Investment Guide',
+    title: 'Navigating Dubai\'s Off-Plan Market: Risks and Rewards',
+    description: 'An essential guide for investors looking to capitalise on pre-construction opportunities in Dubai\'s dynamic real estate landscape.',
+    image: 'https://images.unsplash.com/photo-1541888046425-d81bb19240f5?q=80&w=2940&auto=format&fit=crop',
+    author: 'Gopal Ahuja',
+    date: 'August 2026',
+    readTime: '7 min read',
+    content: [
+      { type: 'paragraph', text: 'The off-plan property market in Dubai continues to attract significant global capital, offering structured payment plans and the potential for substantial capital appreciation before handover. However, the pre-construction sector requires careful navigation to mitigate risks and maximise returns.' },
+      { type: 'heading', text: 'Why Off-Plan Appeals to Investors' },
+      { type: 'list', items: [
+        'Lower entry points compared to ready properties',
+        'Staggered payment plans directly with developers (often spanning construction and post-handover periods)',
+        'First-mover advantage in emerging master communities',
+        'Capital appreciation during the construction cycle'
+      ]},
+      { type: 'heading', text: 'Key Risk Mitigation Strategies' },
+      { type: 'paragraph', text: 'While the rewards can be high, mitigating risk is paramount. I advise my clients to focus on three critical pillars:' },
+      { type: 'list', items: [
+        'Developer Track Record: Only invest with developers who have a proven history of on-time delivery and consistent build quality',
+        'Escrow Compliance: Ensure the project is registered with RERA and all payments are made into the designated project escrow account',
+        'Location Fundamentals: Evaluate the long-term infrastructure plans for the area, not just the developer\'s marketing collateral'
+      ]},
+      { type: 'divider' },
+      { type: 'paragraph', text: 'For a tailored list of current off-plan opportunities that meet institutional investment criteria, please reach out directly.' }
+    ]
+  },
+
+  // ─── ARTICLE 10: The Impact of Golden Visas on Property Demand ───
+  {
+    slug: 'golden-visas-property-demand',
+    tag: 'Policy Impact',
+    title: 'How Golden Visas Are Reshaping Dubai Property Demand',
+    description: 'Analyzing the long-term effects of the UAE\'s residency reforms on real estate investment patterns.',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop',
+    author: 'Gopal Ahuja',
+    date: 'September 2026',
+    readTime: '8 min read',
+    content: [
+      { type: 'paragraph', text: 'The introduction and expansion of the UAE Golden Visa programme has fundamentally altered the demographics and investment horizon of property buyers in Dubai. By unlinking residency from employment, the government has incentivised long-term capital commitment.' },
+      { type: 'heading', text: 'From Transient to Permanent' },
+      { type: 'paragraph', text: 'Historically, Dubai was viewed by many expatriates as a short-to-medium-term hub. The 10-year Golden Visa—available to property investors who cross the AED 2 million threshold—has shifted this mindset. Investors are now purchasing family homes with a 10-to-20-year horizon, directly increasing demand for larger villas, townhouses, and premium education-adjacent communities.' },
+      { type: 'heading', text: 'Market Impact' },
+      { type: 'list', items: [
+        'Increased demand in the AED 2M+ price bracket',
+        'Higher retention of high-net-worth individuals within the ecosystem',
+        'Greater stability in the luxury rental market as more residents transition from renting to owning'
+      ]},
+      { type: 'divider' },
+      { type: 'paragraph', text: 'To understand how the Golden Visa can align with your investment and lifestyle goals in Dubai, contact me for a strategic consultation.' }
+    ]
+  },
+
+  // ─── ARTICLE 11: Commercial Real Estate Resurgence ───
+  {
+    slug: 'commercial-real-estate-resurgence',
+    tag: 'Commercial Market',
+    title: 'The Resurgence of Grade A Commercial Real Estate in Dubai',
+    description: 'Why global corporations and financial institutions are driving office occupancy to record highs.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940&auto=format&fit=crop',
+    author: 'Gopal Ahuja',
+    date: 'October 2026',
+    readTime: '9 min read',
+    content: [
+      { type: 'paragraph', text: 'Despite global debates about the future of the office, Dubai\'s Grade A commercial real estate sector is experiencing a massive resurgence. Free zones like DIFC and DMCC are seeing unprecedented demand, pushing vacancy rates to single digits and driving rental yields higher.' },
+      { type: 'heading', text: 'Drivers of Commercial Demand' },
+      { type: 'list', items: [
+        'Relocation of global hedge funds and asset managers to Dubai',
+        'Expansion of regional headquarters by multinational tech and finance firms',
+        'The flight to quality: companies upgrading to ESG-compliant, premium office spaces to attract top talent'
+      ]},
+      { type: 'heading', text: 'Investment Opportunities' },
+      { type: 'paragraph', text: 'For investors, the shortage of premium office space presents a compelling case for acquiring commercial floors in strategic locations. Yields in this sector remain attractive, often outpacing residential returns while offering longer lease terms and corporate tenant stability.' },
+      { type: 'divider' },
+      { type: 'paragraph', text: 'If you are looking to diversify your portfolio with high-yielding commercial assets, let\'s discuss the current opportunities in DIFC and Business Bay.' }
+    ]
+  },
+
+  // ─── ARTICLE 12: Dubai South & The Aviation Corridor ───
+  {
+    slug: 'dubai-south-aviation-corridor',
+    tag: 'Emerging Districts',
+    title: 'Dubai South: Investing in the Future Aviation Corridor',
+    description: 'Evaluating the long-term investment potential surrounding Al Maktoum International Airport.',
+    image: 'https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=2940&auto=format&fit=crop',
+    author: 'Gopal Ahuja',
+    date: 'November 2026',
+    readTime: '8 min read',
+    content: [
+      { type: 'paragraph', text: 'With the announced expansion of Al Maktoum International Airport (DWC) to become the world\'s largest airport, the surrounding Dubai South district is poised for transformational growth. The area represents one of the most significant long-term real estate plays in the region.' },
+      { type: 'heading', text: 'The Catalyst: DWC Expansion' },
+      { type: 'paragraph', text: 'The AED 128 billion airport expansion will shift the centre of gravity for Dubai\'s aviation, logistics, and exhibition sectors. The sheer scale of job creation in this corridor will necessitate massive residential and commercial development.' },
+      { type: 'heading', text: 'Where the Smart Capital is Going' },
+      { type: 'list', items: [
+        'Logistics and warehousing facilities to support the expanding free zone',
+        'Affordable and mid-market residential developments to house the growing workforce',
+        'Strategic land banking in master-planned communities adjacent to the airport site'
+      ]},
+      { type: 'divider' },
+      { type: 'paragraph', text: 'Investing in Dubai South requires a medium-to-long-term horizon. Contact me to explore how to position your capital ahead of the infrastructure curve.' }
+    ]
+  },
+
+  // ─── ARTICLE 13: The Rise of Co-Living and Micro-Apartments ───
+  {
+    slug: 'rise-of-coliving-dubai',
+    tag: 'Alternative Assets',
+    title: 'The Rise of Co-Living Spaces in Dubai',
+    description: 'How changing demographics are driving demand for alternative residential asset classes.',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2940&auto=format&fit=crop',
+    author: 'Gopal Ahuja',
+    date: 'December 2026',
+    readTime: '7 min read',
+    content: [
+      { type: 'paragraph', text: 'As Dubai\'s population grows and demographics shift toward a younger, highly mobile expatriate workforce, the traditional rental market is evolving. Co-living spaces and micro-apartments are emerging as a highly profitable asset class.' },
+      { type: 'heading', text: 'Understanding the Demand' },
+      { type: 'paragraph', text: 'Young professionals, digital nomads, and entrepreneurs increasingly prioritise flexibility, community, and convenience over square footage. Co-living developments that offer fully furnished units, shared amenities, and inclusive utility billing are achieving significant rental premiums on a per-square-foot basis.' },
+      { type: 'heading', text: 'The Yield Advantage' },
+      { type: 'paragraph', text: 'For investors and developers, the economics of co-living are highly attractive. By optimising space and monetising shared amenities, these assets can generate yields of 8-10% net, outperforming traditional long-term residential leases.' },
+      { type: 'divider' },
+      { type: 'paragraph', text: 'To learn more about participating in purpose-built co-living developments as an investor or joint-venture partner, please connect with me.' }
+    ]
+  }
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {

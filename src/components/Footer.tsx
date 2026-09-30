@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import Link from 'next/link';
 import { MapPin, Mail, Phone } from 'lucide-react';
 
 const LinkedinIcon = () => (
@@ -54,15 +56,15 @@ export function Footer() {
             <ul className="flex flex-col gap-4">
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-none bg-zinc-700" />
-                <a href="/" className="text-white/70 text-sm hover:text-white transition-colors font-sans">Home</a>
+                <Link href="/" className="text-white/70 text-sm hover:text-white transition-colors font-sans">Home</Link>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-none bg-zinc-700" />
-                <a href="/insights" className="text-white/70 text-sm hover:text-white transition-colors font-sans">Insights</a>
+                <Link href="/insights" className="text-white/70 text-sm hover:text-white transition-colors font-sans">Insights</Link>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-none bg-zinc-700" />
-                <a href="/about" className="text-white/70 text-sm hover:text-white transition-colors font-sans">About Us</a>
+                <Link href="/about" className="text-white/70 text-sm hover:text-white transition-colors font-sans">About Us</Link>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-none bg-zinc-700" />
@@ -145,8 +147,8 @@ export function Footer() {
             <span className="text-white font-bold">&copy; 2026 GOPAL AHUJA.</span> <span className="mx-2">|</span> MASTER SOVEREIGN ALIGNMENT.
           </div>
           <div className="flex gap-6 font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-white">
-            <a href="#" className="hover:text-red-700 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-red-700 transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="hover:text-red-700 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-red-700 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
