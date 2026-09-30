@@ -183,8 +183,26 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
         </div>
 
         <div className="md:hidden flex items-center gap-4 z-50">
-          <button className="md:hidden text-white z-50" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button 
+            className="md:hidden relative z-50 w-6 h-6 flex flex-col justify-center items-center focus:outline-none" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <motion.span 
+              animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }} 
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute w-6 h-[2px] bg-white rounded-full" 
+            />
+            <motion.span 
+              animate={isMobileMenuOpen ? { opacity: 0, scale: 0.5 } : { opacity: 1, scale: 1 }} 
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute w-6 h-[2px] bg-white rounded-full" 
+            />
+            <motion.span 
+              animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }} 
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute w-6 h-[2px] bg-white rounded-full" 
+            />
           </button>
         </div>
       </motion.nav>
@@ -192,10 +210,18 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.1, delayChildren: 0.1 }
+              },
+              exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }
+            }}
             className="fixed inset-0 z-[9998] bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
           >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
@@ -207,18 +233,28 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
                 { route: 'insights', label: 'Insights', href: '/insights' },
                 { route: 'about', label: 'About Us', href: '/about' }
               ].map((link) => (
-                <a
+                <motion.a
                   key={link.route}
                   href={link.href}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                  }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`text-3xl font-bold tracking-tight relative inline-block mx-auto pb-1.5 transition-colors ${
                     activeRoute === link.route ? 'text-white border-b-2 border-[#C8102E]' : 'text-gray-400 hover:text-white'
                   }`}
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
-              <div className="mt-8">
+              <motion.div 
+                className="mt-8"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                }}
+              >
                 <span 
                   className="w-full flex items-center justify-center border border-[#C8102E] text-white bg-[#C8102E] hover:bg-red-700 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest cursor-pointer transition-all duration-250 shadow-md" 
                   onClick={() => { 
@@ -230,7 +266,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
                 >
                   Contact Gopal
                 </span>
-              </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}
