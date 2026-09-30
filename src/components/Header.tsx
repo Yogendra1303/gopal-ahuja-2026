@@ -128,7 +128,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
           y: isHeaderHidden ? -25 : 0 
         }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className={`fixed top-0 w-full h-14 z-50 px-6 md:px-12 flex items-center justify-between transition-colors duration-300 ${
+        className={`fixed top-0 w-full h-14 z-[100] px-6 md:px-12 flex items-center justify-between transition-colors duration-300 ${
           isHeaderHidden ? 'pointer-events-none' : ''
         } ${
           isScrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-md border-b border-slate-800' : 'bg-[#0F172A] border-b border-slate-800/80'
@@ -194,7 +194,7 @@ export function Header({ activeRoute = 'home' }: { activeRoute?: string }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
+            className="fixed inset-0 z-[90] bg-[#0F172A]/98 backdrop-blur-2xl flex flex-col justify-center items-center px-6"
           >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#C8102E]/5 blur-[120px] rounded-none pointer-events-none" />
