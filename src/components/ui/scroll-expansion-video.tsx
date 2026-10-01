@@ -33,7 +33,7 @@ export function ScrollExpansionVideo() {
         {isPlaying ? (
           <video
             ref={videoRef}
-            src="/assets/LPV 1.MP4"
+            src="/assets/LPV_1.mp4"
             controls
             autoPlay
             className="w-full h-full object-cover"
